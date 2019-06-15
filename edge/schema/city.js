@@ -32,22 +32,22 @@ const resolvers = {
       let min = 10000;
 
 
-      return db.any("select destination, departure from orders   ")
+      return db.any("select destination, created_at from orders   ")
         .then(res => {
           let  date = [];
+          let now = new Date();
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','July','Aug','Sept','Oct','Nov','Dec'];
            res.forEach(item =>{
-              let month = {"date":parseInt(item.departure.split("T")[0].split('-')[1]),"dest":item.destination};
-              date.push(month);
-          });
-           console.log(res);
-           let intersect =date.filter(value => bulanBesar.includes(value));
-           intersect.sort();
-           intersect.forEach(item =>{
-             let selisih = item - now;
-             if(selisih>0){
-
+             let datas = item.created_at+"";
+             //ambil natal
+             if(datas.split(" ")[1] == 'Dec' || datas.split(" ")[1] == 'Jan'  ){
+               let month = {"date":datas.split(" ")[1],"dest":item.destination};
+               date.push(month);
              }
-           })
+
+          });
+           console.log(date);
+
 
         });
     }

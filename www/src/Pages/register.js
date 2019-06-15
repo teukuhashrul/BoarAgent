@@ -13,15 +13,15 @@ import Recaptcha from "react-recaptcha";
 import { Mutation } from "react-apollo";
 
 const register = gql`
-  mutation register($input: UserInput) {
-    register(input: $input)
-  }
+    mutation register($name:String , $email:String ,$phone:String,$password:String){
+        register(nama:$name , email:$email , phone:$phone , password:$password)
+    }
 `;
 
 let recaptchaInstance;
 
 class Register extends Component {
-  state = { isHuman: false };
+  state = { isHuman: false ,name:"",email: "",phone:"",password:""};
   render() {
     return (
       <Container className="d-flex justify-content-center text-center register-container">
@@ -39,42 +39,19 @@ class Register extends Component {
                           e.preventDefault();
                           recaptchaInstance.reset();
                           if (this.state.isHuman) {
-                            if (
-                              this.state.password === this.state.secPassword &&
-                              this.state.password !== ""
-                            ) {
-                              let UserInput = {
-                                phone: this.state.phone,
-                                email: this.state.email,
-                                password: this.state.password,
-                                firstName: this.state.firstName,
-                                lastName: this.state.lastName,
-                                response: this.state.response
-                              };
-                              register({
-                                variables: {
-                                  input: UserInput
-                                }
-                              }).then(res => {
-                                // we can use if in here
-                                console.log(res);
-                                if (res.data.register === "fail") {
-                                  this.setState({
-                                    showError: true,
-                                    isHuman: false,
-                                    errMessage:
-                                      "Email yang Kamu masukan sudah terdaftar!"
-                                  });
-                                } else {
-                                  this.props.history.push("/login");
-                                }
-                              });
-                            } else {
-                              this.setState({
-                                showError: true,
-                                errMessage: "password tidak sama"
-                              });
-                            }
+                            register({
+                              variables:{
+                                name:this.state.name,
+                                email:this.state.email,
+                                password:this.state.password,
+                                phone:this.state.phone
+                              }
+                            }).then(res => {
+                              let status = res.data.register;
+                              if(status === 'sukses'){
+                                this.props.history.push('/login');
+                              }
+                            });
                           } else {
                             this.setState({
                               errMessage: "Isi Dulu Captcha nyaa!!!",
@@ -95,7 +72,10 @@ class Register extends Component {
                             <i className="register-fas fas fa-user" />
                             Nama Lengkap
                           </Form.Label>
-                          <Form.Control type="name" />
+                          <Form.Control onChange={e =>{
+                            e.preventDefault();
+                            this.setState({name: e.target.value})
+                          }} type="name" />
                         </Form.Group>
 
                         <Form.Group
@@ -106,7 +86,10 @@ class Register extends Component {
                             <i className="register-fas fas fa-at" />
                             Email
                           </Form.Label>
-                          <Form.Control type="email" />
+                          <Form.Control onChange={e =>{
+                            e.preventDefault();
+                            this.setState({email: e.target.value})
+                          }}  type="email" />
                         </Form.Group>
                         <Form.Group
                           controlId="registerEmail"
@@ -116,7 +99,10 @@ class Register extends Component {
                             <i className="register-fas fas fa-at" />
                             Phone Number
                           </Form.Label>
-                          <Form.Control type="number" />
+                          <Form.Control onChange={e =>{
+                            e.preventDefault();
+                            this.setState({phone: e.target.value})
+                          }}  type="number" />
                         </Form.Group>
 
                         <Form.Group
@@ -127,18 +113,10 @@ class Register extends Component {
                             <i className="register-fas fas fa-lock" />
                             Password
                           </Form.Label>
-                          <Form.Control type="password" />
-                        </Form.Group>
-
-                        <Form.Group
-                          controlId="registerConfirmPassword"
-                          className="text-left"
-                        >
-                          <Form.Label>
-                            <i className="register-fas fas fa-lock" />
-                            Konfirmasi Password
-                          </Form.Label>
-                          <Form.Control />
+                          <Form.Control onChange={e =>{
+                            e.preventDefault();
+                            this.setState({password: e.target.value})
+                          }}  type="password" />
                         </Form.Group>
                         <Recaptcha
                           ref={e => (recaptchaInstance = e)}
