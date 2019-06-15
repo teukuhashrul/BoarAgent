@@ -1,0 +1,48 @@
+/*kadoqu color scheme or at least footer color scheme */
+
+:root {
+  /*i dont know what the name for the  colors so i called green */
+  --lightGreen: #b8f0e4;
+  --darkGreen: #16978c;
+}
+.footer-text {
+  width: 100%;
+  text-align: center;
+  font-size: small;
+}
+
+.footer-container {
+  background: var(--lightGreen);
+  /*position: fixed;*/
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+}
+
+/*warna untuk text pada footer*/
+.teal {
+  color: var(--darkGreen);
+}
+
+ul {
+  list-style-type: none;
+}
+
+.btnn {
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.successs {
+  border-color: var(--darkGreen);
+  color: green;
+}
+
+.middlePage {
+  margin-left: 10rem;
+}
