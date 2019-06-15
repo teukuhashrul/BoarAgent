@@ -8,8 +8,9 @@ import Register from "./Pages/register";
 import Home from "./Pages/Home";
 import Header from "./components/Header";
 //simple set up
+let localstorage = window.localStorage;
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io"
+  uri: process.env.REACT_APP_GATEWAY_URL || "http://localhost:4000"
 });
 
 const App = props => (
