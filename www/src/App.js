@@ -6,6 +6,7 @@ import { ApolloProvider } from "react-apollo";
 import Login from "./Pages/Login";
 import Register from "./Pages/register";
 import Home from "./Pages/Home";
+import Header from "./components/Header";
 //simple set up
 const client = new ApolloClient({
   uri: "https://48p1r2roz4.sse.codesandbox.io"
@@ -14,6 +15,7 @@ const client = new ApolloClient({
 const App = props => (
   <Router>
     <ApolloProvider client={client}>
+      <Header />
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
