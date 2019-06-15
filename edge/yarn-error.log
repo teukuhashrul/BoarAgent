@@ -1,0 +1,48 @@
+Arguments: 
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add amadeus
+
+PATH: 
+  /media/jonatan/Data/React-pgql/node_modules/.bin:/home/jonatan/bin:/home/jonatan/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.15.2
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: getaddrinfo EAI_AGAIN codeload.github.com codeload.github.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:57:26)
+
+npm manifest: 
+  {
+    "name": "edge",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+      "amadeus": "^3.1.0",
+      "apollo-server": "^2.6.2",
+      "graphql": "^14.3.1",
+      "lodash": "^4.17.11",
+      "mysql": "github:mysqljs/mysql",
+      "nodemon": "^1.19.1",
+      "pg-promise": "^8.7.2"
+    },
+    "devDependencies": {},
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon index.js"
+    },
+    "author": "",
+    "license": "ISC"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

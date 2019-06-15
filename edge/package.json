@@ -1,0 +1,24 @@
+{
+  "name": "edge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "amadeus": "^3.1.0",
+    "apollo-server": "^2.6.2",
+    "flightstats": "^0.20.0",
+    "graphql": "^14.3.1",
+    "lodash": "^4.17.11",
+    "mysql": "github:mysqljs/mysql",
+    "nodemon": "^1.19.1",
+    "pg-promise": "^8.7.2",
+    "skypicker": "^1.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

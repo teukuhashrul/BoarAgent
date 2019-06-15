@@ -1,0 +1,8 @@
+{
+  "name": "react-pgql",
+  "version": "1.0.0",
+  "description": "a simple react-dom library with pg + graphql ",
+  "main": "index.js",
+  "author": "jonatanlaksamanapurnomo",
+  "license": "MIT"
+}
