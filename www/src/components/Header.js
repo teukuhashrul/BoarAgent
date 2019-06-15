@@ -15,9 +15,20 @@ class Header extends Component {
     return (
       <Container>
         <Navbar>
+          <Navbar.Brand href="/">
+            {" "}
+            <img src={require("../Pages/images/logo.png")} width="50" />
+          </Navbar.Brand>
           <Navbar.Brand href="/">Boar Agent</Navbar.Brand>
-          <Navbar.Brand href="/Login">Log in</Navbar.Brand>
-          <Navbar.Brand href="/Register">Register</Navbar.Brand>
+          <Navbar.Brand className="justify-content-end" href="/Login">
+            Log in
+          </Navbar.Brand>
+          <Navbar.Brand className="justify-content-end" href="/Register">
+            Register
+          </Navbar.Brand>
+          <Navbar.Brand className="justify-content-end" href="/wishlist">
+            Wishlist
+          </Navbar.Brand>
         </Navbar>
       </Container>
     );

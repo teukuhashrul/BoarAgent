@@ -7,6 +7,8 @@ import Login from "./Pages/Login";
 import Register from "./Pages/register";
 import Home from "./Pages/Home";
 import Header from "./components/Header";
+import Checkout from "./Pages/Checkout";
+import wishlist from "./Pages/Wishlist";
 //simple set up
 const client = new ApolloClient({
   uri: "https://48p1r2roz4.sse.codesandbox.io"
@@ -19,6 +21,9 @@ const App = props => (
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/checkout" component={Checkout} />
+        <Route path="/wishlist" component={wishlist} />
+
         <Route path="/" exact component={Home} />
       </Switch>
     </ApolloProvider>
