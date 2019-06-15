@@ -61,6 +61,12 @@ class ProductItemCart extends Component {
         </Row>
         <Row>
           <Col>
+            <Button className="pilihh" variant="warning">
+              Add to Wishlist
+            </Button>
+          </Col>
+
+          <Col>
             <Button className="pilih" variant="warning">
               Pilih
             </Button>

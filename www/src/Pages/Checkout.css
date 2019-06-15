@@ -1,0 +1,33 @@
+.bg {
+  background-image: "./images/1.jpg";
+}
+.checkout-card {
+  width: 40rem;
+  box-shadow: 4px 8px 20px #b0b0b0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: none;
+}
+.detailnya {
+  margin-left: 3rem;
+  margin-top: 3rem;
+}
+.formnya {
+  width: 80%;
+  height: 100%;
+  margin-left: 2rem;
+  background: transparent;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+}
+.batasisi {
+  width: 20rem;
+}
+.batasisi2 {
+  width: 5rem;
+}
+.checkoutaja {
+  margin-top: 3rem;
+  box-shadow: 4px 8px 20px #b0b0b0;
+}
