@@ -1,0 +1,100 @@
+.login-container,
+.register-container {
+  padding-top: 60px;
+}
+
+.home-card {
+  width: 60rem;
+  box-shadow: 4px 8px 20px #b0b0b0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: none;
+  z-index: 10;
+  margin-top: -400px;
+}
+
+.tulisankiri {
+  margin-top: 5rem;
+  margin-left: 1rem;
+}
+
+.login-form,
+.register-form {
+  padding-left: 7rem;
+  padding-right: 7rem;
+}
+
+.login-button,
+.login-button:hover,
+.login-button:active,
+.forgot-password-button,
+.register-button,
+.register-button:hover,
+.register-button:active {
+  background-color: chocolate !important;
+}
+
+.login-button,
+.register-button {
+  width: 175px;
+}
+
+.login-fas,
+.register-fas {
+  padding: 6px;
+  color: #00978b;
+}
+.white {
+  background-color: white;
+}
+.batasatas {
+  margin-top: 5rem;
+}
+.login-card-fore,
+.register-card-fore {
+  box-shadow: 4px 8px 20px #b0b0b0;
+}
+
+.login-form .form-control,
+.forgot-password-form .form-control,
+.register-form .form-control {
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 0px;
+}
+
+.login-form .form-control:focus,
+.forgot-password-form .form-control:focus,
+.register-form .form-control:focus {
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.atasgambar {
+  color: white;
+}
+h3 {
+  font-size: 20px;
+  margin: 0px;
+  margin-top: -1rem;
+}
+.atasform {
+  background-color: #f8f8f8;
+  padding-bottom: 1.5rem;
+}
+.belakanggambar {
+  background-color: white;
+  width: 13rem;
+  height: 13rem;
+  margin-left: 3.6rem;
+  border: 0.5 solid grey;
+  border-radius: 15px;
+  margin-top: 1rem;
+}
+.planeicon {
+  margin-left: 15rem;
+  margin-top: 1rem;
+}
+.cari {
+  margin-top: 1rem;
+}
