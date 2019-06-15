@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../React-pgql/.idea/React-pgql.iml" filepath="$PROJECT_DIR$/../React-pgql/.idea/React-pgql.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Boaragents.iml" filepath="$PROJECT_DIR$/.idea/Boaragents.iml" />
     </modules>
   </component>
 </project>
