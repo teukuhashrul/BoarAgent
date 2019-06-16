@@ -255,6 +255,24 @@ class Home extends Component {
           <Carousel.Item>
             <img
               className="d-block w-85"
+              src={require("./images/car.png")}
+              alt="First slide"
+              height="550"
+              width="100%"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-85"
+              src={require("./images/car1.png")}
+              alt="First slide"
+              height="550"
+              width="100%"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-85"
               src={require("./images/1.jpg")}
               alt="First slide"
               height="550"
