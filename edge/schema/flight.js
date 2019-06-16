@@ -38,6 +38,7 @@ const resolvers = {
             currencyRate = 16114;
           }
           arrData.forEach((item) => {
+
             let offerItems = item.offerItems;
             offerItems.forEach(item => {
 
@@ -48,8 +49,8 @@ const resolvers = {
                   let departureAirport= item.flightSegment.departure.iataCode;
                   let arrivalAirport = item.flightSegment.arrival.iataCode;
                   // let date = new Date(item.flightSegment.arrival.at);
-                  // console.log(date.getHours());
-                  if((departureAirport === origin && arrivalAirport === dest) ||(departureAirport === dest && arrivalAirport === origin) ){
+                  // if(departureAirport === origin && arrivalAirport === dest ){
+                    console.log("a");
                     let test = item.flightSegment.arrival.at.split("T")[1].split("+");
                     totalPrice=Math.floor(totalPrice * currencyRate) +"";
                     taxPrice = Math.floor(taxPrice * currencyRate)+"";
@@ -57,7 +58,7 @@ const resolvers = {
                     item.flightSegment.taxPrice =  taxPrice;
                     item.flightSegment.currency = currency;
                     arrModif.push(item.flightSegment);
-                  }
+                  // }
 
                 })
               })
@@ -76,7 +77,8 @@ const resolvers = {
           result.forEach(item=> {
             arrResult.push(arrModif[item.index]);
           });
-          return arrResult;
+
+          return arrModif;
         });
       }
       else{
@@ -133,7 +135,8 @@ const resolvers = {
           result.forEach(item=> {
             arrResult.push(arrModif[item.index]);
           });
-          return arrResult;
+          console.log(arrModif);
+          return arrModif;
         });
       }
 

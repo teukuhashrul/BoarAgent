@@ -19,6 +19,12 @@ import gql from "graphql-tag";
 import {Query,Mutation} from "react-apollo";
 
 
+const getBusinesFLights = gql`
+    mutation getBusinesFLights($origin:String,$dest:String,$departureDate:String,$returnDate:String){
+        getBusinesFLights(origin:$origin, dest:$dest , departureDate:$departureDate , returnDate:$returnDate ,isOne:1)
+    }
+`;
+
 const query = gql`
     query getCities{
         getCities{
@@ -32,7 +38,7 @@ const query = gql`
     }
 `;
 const mostPointIntrest = gql`
-    mutation getFavCities{
+    query getFavCities{
         getFavCities
     }
 `;
@@ -112,6 +118,11 @@ class Home extends Component {
   }
   componentDidMount() {
     this.props.client.query({
+      query:query
+    }).then(res => {
+      languages = res.data.getCities;
+    });
+    this.props.client.query({
       query: query
     }).then(res => {
       this.setState({
@@ -119,7 +130,13 @@ class Home extends Component {
       });
 
     });
-
+    this.props.client.query({
+      query:mostPointIntrest
+    }).then(res => {
+      this.setState({
+        mostIntrest:res.data.getFavCities
+      });
+    });
 
 
 
@@ -274,6 +291,103 @@ class Home extends Component {
               </Col>
             </Row>
             <div className="buatwork" id="buatwork">
+              <Mutation mutation={getBusinesFLights} >
+                {(getBusinesFLights) => (
+                  <Form className="login-form">
+                    <Row>
+                      <Col>
+                        <h5 className="cari">
+                          Cari harga tiket pesawat murah dan promo di sini!
+                        </h5>
+                      </Col>
+                    </Row>
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        controlId="loginEmail"
+                        className="text-left"
+                      >
+                        <i class="fas fa-plane-departure" />
+                        {"   "} <Form.Label>Dari</Form.Label>
+                        <Autosuggest
+                          suggestions={suggestions}
+                          onSuggestionsFetchRequested={
+                            this.onSuggestionsFetchRequested
+                          }
+                          onSuggestionsClearRequested={
+                            this.onSuggestionsClearRequested
+                          }
+                          getSuggestionValue={getSuggestionValue}
+                          renderSuggestion={renderSuggestion}
+                          inputProps={inputProps}
+                        />
+                      </Form.Group>
+                      <Form.Group as={Col}>
+                        <i class="fas fa-exchange-alt fa-2x returnicon" />
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        controlId="loginPassword"
+                        className="text-left"
+                      >
+                        <i class="fas fa-plane-arrival" />{" "}
+                        <Form.Label>Ke</Form.Label>
+                        <Form.Control onChange={e=>{
+                          e.preventDefault();
+                          this.setState({
+                            destination:e.target.value
+                          });
+                        }} type="text" />
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        controlId="loginEmail"
+                        className="text-left"
+                      >
+                        <i class="far fa-calendar-alt" />{" "}
+                        <Form.Label>Pergi</Form.Label>
+                        <Form.Control onChange={e=>{
+                          e.preventDefault();
+                          this.setState({
+                            derparture:e.target.value
+                          })
+                        }} type="text" />
+                      </Form.Group>
+                      <Form.Group
+                        as={Col}
+                        controlId="loginEmail"
+                        className="text-left"
+                      >
+                        <i class="far fa-calendar-alt" />{" "}
+                        <Form.Label>Pulang</Form.Label>
+                        <Form.Control onChange={e => {
+                          e.preventDefault();
+                          this.setState({
+                            arrival:e.target.value
+                          })
+                        }} type="text" />
+                      </Form.Group>
+                    </Form.Row>
+                    <Form.Row>
+                      <Col>
+                        <Button onClick={(e)=>{
+                          e.preventDefault();
+                          console.log("asdasd");
+
+                        }} className="but" variant="danger">
+                          Pesan
+                        </Button>
+                      </Col>
+                    </Form.Row>
+                  </Form>
+                )}
+
+
+
+
+              </Mutation>
               <Form className="login-form">
                 <Row>
                   <Col>
@@ -345,12 +459,12 @@ class Home extends Component {
                   >
                     <i class="far fa-calendar-alt" />{" "}
                     <Form.Label>Pergi</Form.Label>
-                    <DatePicker
-                      className="formnya"
-                      dateFormat="yyyy-MM-dd"
-                      selected={this.state.startDatee}
-                      onChange={this.handleChange}
-                    />
+                    <Form.Control onChange={e=>{
+                      e.preventDefault();
+                      this.setState({
+                        derparture :e.target.value
+                      })
+                    }} type="text"/>
                   </Form.Group>
                   <Form.Group
                     as={Col}
@@ -359,39 +473,23 @@ class Home extends Component {
                   >
                     <i class="far fa-calendar-alt" />{" "}
                     <Form.Label>Pulang</Form.Label>
-                    <DatePicker
-                      className="formnya"
-                      selected={this.state.startDate}
-                      onChange={this.handleChangee}
-                    />
+                    <Form.Control onChange={e=>{
+                      e.preventDefault();
+                      this.setState({
+                        arrival: e.target.value
+                      });
+                    }} type="text" />
                   </Form.Group>
-                  <Form.Group as={Col} />
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <Form.Label>Penumpang</Form.Label>
 
-                    <Form.Control type="date" />
-                  </Form.Group>
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <Form.Label>Kelas</Form.Label>
-
-                    <Form.Control as="select">
-                      <option>Ekonomi</option>
-                      <option>Bisnis</option>
-                      <option>First Class</option>
-                    </Form.Control>
-                  </Form.Group>
                 </Form.Row>
                 <Form.Row>
                   <Col>
-                    <Button className="but" variant="danger">
+                    <Button  onClick={(e)=>{
+                      e.preventDefault();
+                      console.log("a");
+
+
+                    }}className="but" variant="danger">
                       Pesan
                     </Button>
                   </Col>

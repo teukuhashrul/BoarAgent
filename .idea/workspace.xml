@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92d1f2f4-6568-4236-98ef-a72f65a6bd1a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edge/schema/city.js" beforeDir="false" afterPath="$PROJECT_DIR$/edge/schema/city.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edge/schema/flight.js" beforeDir="false" afterPath="$PROJECT_DIR$/edge/schema/flight.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/www/src/Pages/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/Pages/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/www/src/components/datapesawat.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/src/components/datapesawat.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,17 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/edge/schema/flight.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="150" column="29" lean-forward="true" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/edge/node_modules/graphql/language/parser.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1029">
-              <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
+            <state relative-caret-position="-3228">
+              <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -59,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/edge/schema/city.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1134">
-              <caret line="81" selection-start-line="81" selection-end-line="82" />
+            <state relative-caret-position="1695">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -73,11 +61,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/www/src/Pages/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+            <state relative-caret-position="315">
+              <caret line="376" column="48" selection-start-line="376" selection-start-column="48" selection-end-line="376" selection-end-column="48" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/www/src/Pages/Home.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -119,14 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>destination</find>
-      <find>ke</find>
-      <find>arrival</find>
-      <find>FORM</find>
-      <find>QUERY</find>
-      <find>form</find>
-      <find>Query</find>
-      <find>autosuggest</find>
       <find>form.g</find>
       <find>auto</find>
       <find>datepicker</find>
@@ -137,7 +126,6 @@
       <find>mutatio</find>
       <find>text</find>
       <find>then</find>
-      <find>mutation</find>
       <find>this.state.flight</find>
       <find>this.state.flightOffer</find>
       <find>CLICK</find>
@@ -149,6 +137,15 @@
       <find>getVa</find>
       <find>one way</find>
       <find>query</find>
+      <find>DARI</find>
+      <find>pesan</find>
+      <find>Mutation</find>
+      <find>MUtation</find>
+      <find>mutation</find>
+      <find>penumpang</find>
+      <find>form</find>
+      <find>arrival</find>
+      <find>pergi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,17 +171,17 @@
         <option value="$PROJECT_DIR$/www/src/Pages/register.js" />
         <option value="$PROJECT_DIR$/datasource/order-data.sql" />
         <option value="$PROJECT_DIR$/www/src/components/datapesawat.js" />
-        <option value="$PROJECT_DIR$/edge/schema/flight.js" />
         <option value="$PROJECT_DIR$/edge/schema/city.js" />
+        <option value="$PROJECT_DIR$/edge/schema/flight.js" />
         <option value="$PROJECT_DIR$/www/src/Pages/Home.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="141" />
-    <option name="y" value="44" />
+    <option name="x" value="168" />
+    <option name="y" value="108" />
     <option name="width" value="1395" />
-    <option name="height" value="963" />
+    <option name="height" value="956" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -282,18 +279,18 @@
       <option name="presentableId" value="Default" />
       <updated>1560575551964</updated>
       <workItem from="1560575556126" duration="59180000" />
-      <workItem from="1560648477483" duration="588000" />
+      <workItem from="1560648477483" duration="5125000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59768000" />
+    <option name="totallyTimeSpent" value="64305000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
+    <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25235197" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.33953834" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Storybook" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" />
@@ -312,7 +309,7 @@
       <window_info anchor="bottom" id="GraphQL" order="9" />
       <window_info anchor="bottom" id="DB Execution Console" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" visible="true" weight="0.31697342" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.37804878" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Console" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -321,6 +318,35 @@
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Geek &amp; Poke" order="4" side_tool="true" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33953834" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Storybook" order="2" side_tool="true" />
+      <window_info id="DB Browser" order="3" />
+      <window_info id="Project Explorer" order="4" />
+      <window_info id="Job Explorer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="GraphQL" order="9" />
+      <window_info anchor="bottom" id="DB Execution Console" order="10" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.37804878" />
+      <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
+      <window_info anchor="bottom" id="Console" order="14" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Geek &amp; Poke" order="4" side_tool="true" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -477,24 +503,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edge/schema/flight.js">
+    <entry file="file://$PROJECT_DIR$/edge/schema/city.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="150" column="29" lean-forward="true" selection-start-line="150" selection-start-column="29" selection-end-line="150" selection-end-column="29" />
+        <state relative-caret-position="1695">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edge/schema/city.js">
+    <entry file="file://$PROJECT_DIR$/www/src/Pages/Home.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1134">
-          <caret line="81" selection-start-line="81" selection-end-line="82" />
+        <state relative-caret-position="209">
+          <caret line="83" column="1" selection-start-line="83" selection-start-column="1" selection-end-line="83" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edge/schema/flight.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3228">
+          <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/www/src/Pages/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="121" column="4" selection-start-line="121" selection-start-column="4" selection-end-line="121" selection-end-column="4" />
+        <state relative-caret-position="315">
+          <caret line="376" column="48" selection-start-line="376" selection-start-column="48" selection-end-line="376" selection-end-column="48" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
