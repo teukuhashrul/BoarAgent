@@ -55,7 +55,7 @@ class ProductItemCart extends Component {
             <h1 className="detail">Details</h1>
           </Col>
           <Col xs={2}>
-            <h1 className="harga">Rp {this.props.harga}</h1>
+            <h1 className="harga">Rp {this.props.price}</h1>
             <h1 className="paket">/pax</h1>
           </Col>
         </Row>
