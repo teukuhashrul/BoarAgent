@@ -1,5 +1,5 @@
 truncate  table  "users";
 insert  into "users" ("email" ,"password" ,"name") values
-('jojo@jojo.com' , crypt('123123jojo', gen_salt('bf')),'jojo' ),
-('hasrul@hasrul.com' , crypt('123123jojo', gen_salt('bf')),'hasrul' ),
-('lara@lara.com' , crypt('123123jojo', gen_salt('bf')),'lara' );
+('jojo@jojo.com' , '123123jojo','jojo' ),
+('hasrul@hasrul.com' , '123123jojo','hasrul' ),
+('lara@lara.com' , '123123jojo','lara' );

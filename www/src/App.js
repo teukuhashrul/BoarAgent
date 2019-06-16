@@ -11,8 +11,9 @@ import Checkout from "./Pages/Checkout";
 import wishlist from "./Pages/Wishlist";
 import gallery from "./Pages/Gallery";
 //simple set up
+let localstorage = window.localStorage;
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io"
+  uri: process.env.REACT_APP_GATEWAY_URL || "http://localhost:4000"
 });
 
 const App = props => (

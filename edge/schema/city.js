@@ -12,14 +12,14 @@ const typeDefs=`
     getCities:[city]
   }
   extend type Mutation{
-    getFavCities:[city]
+    getFavCities:String
   }
 `;
 
 const resolvers = {
   Query:{
     getCities:()=>{
-      return db.any("select * from city order by tours desc")
+      return db.any("select *  from city order by tours desc")
         .then(res => res);
     }
   },
@@ -32,22 +32,57 @@ const resolvers = {
       let min = 10000;
 
 
-      return db.any("select destination, departure from orders   ")
+      return db.any("select destination, created_at from orders   ")
         .then(res => {
           let  date = [];
-           res.forEach(item =>{
-              let month = {"date":parseInt(item.departure.split("T")[0].split('-')[1]),"dest":item.destination};
-              date.push(month);
-          });
-           console.log(res);
-           let intersect =date.filter(value => bulanBesar.includes(value));
-           intersect.sort();
-           intersect.forEach(item =>{
-             let selisih = item - now;
-             if(selisih>0){
+          let now = new Date();
+          let month = now.getMonth();
+          let arrHariBesar = [1,5,12];
+          let monthEvent = [];
+          arrHariBesar.forEach((item) =>{
+            let selisih = item-month;
+            if(selisih>=0){
+              monthEvent.push(item)
+            }
 
+          });
+          var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+          let indexMonth = monthEvent[0];
+          let bulan = months[indexMonth];
+          let nextMonth = months[indexMonth+1];
+           res.forEach(item =>{
+             let datas = item.created_at+"";
+             if(datas.split(" ")[1] == bulan || datas.split(" ")[1] == nextMonth  ){
+               let month = {"date":datas.split(" ")[1],"dest":item.destination};
+               date.push(month);
              }
-           })
+
+          });
+           let map = new Map();
+           let maxDest = "";
+           let maxNumber = 0;
+           date.forEach(item =>{
+             let dest = item.dest;
+             if(!map.has(dest)){
+               map.set(dest,1);
+               if(map.size === 1){
+                 maxDest = dest;
+               }
+             }else{
+               let num = map.get(dest);
+               num++;
+               if(num>maxNumber){
+                 maxNumber = num;
+                 maxDest = dest;
+               }
+             }
+
+
+           });
+           
+           return maxDest;
+           // console.log(date);
+
 
         });
     }
