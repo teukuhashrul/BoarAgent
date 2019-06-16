@@ -4,7 +4,7 @@ import { Col, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { Modal } from "react-bootstrap";
 
-class ProductItemCart extends Component {
+class datawish extends Component {
   constructor(props) {
     super(props);
     this.handleShow = this.handleShow.bind(this);
@@ -60,19 +60,10 @@ class ProductItemCart extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Button
-              color={this.props.color}
-              display={this.props.display}
-              className="pilihh"
-              variant="warning"
-            >
-              Add to Wishlist
-            </Button>
-          </Col>
+          <Col />
 
           <Col>
-            <Button className="pilih" variant="warning">
+            <Button className="pilihq" variant="warning">
               Pilih
             </Button>
           </Col>
@@ -83,4 +74,4 @@ class ProductItemCart extends Component {
   }
 }
 
-export default ProductItemCart;
+export default datawish;

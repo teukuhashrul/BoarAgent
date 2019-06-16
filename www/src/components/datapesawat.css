@@ -2,6 +2,7 @@
   font-size: 15px;
   margin-left: -40rem;
   font-family: "Anonymous Pro", monospace;
+  margin-top: 5rem;
 }
 .berangkat {
   font-size: 22px;
@@ -42,6 +43,14 @@
 }
 .pilih {
   margin-left: 40rem;
+  margin-top: -10rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.pilihq {
+  margin-left: 5rem;
   margin-top: -10rem;
   padding-top: 1rem;
   padding-bottom: 1rem;

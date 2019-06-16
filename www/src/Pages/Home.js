@@ -527,6 +527,7 @@ class Home extends Component {
                     durasi={item.duration}
                     sampai={item.arrival.iataCode}
                     price={item.totalPrice}
+                    display="block"
                   />
                   <hr className="garisabuabu" />
                 </div>
