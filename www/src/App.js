@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import Checkout from "./Pages/Checkout";
 import wishlist from "./Pages/Wishlist";
 import gallery from "./Pages/Gallery";
+import notif from "./Pages/Notif";
 //simple set up
 let localstorage = window.localStorage;
 const client = new ApolloClient({
@@ -26,7 +27,7 @@ const App = props => (
         <Route path="/checkout" component={Checkout} />
         <Route path="/wishlist" component={wishlist} />
         <Route path="/gallery" component={gallery} />
-
+        <Route path="/notif" component={notif} />
         <Route path="/" exact component={Home} />
       </Switch>
     </ApolloProvider>

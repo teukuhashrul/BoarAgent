@@ -33,6 +33,9 @@ class Header extends Component {
           <Navbar.Brand className="justify-content-end" href="/wishlist">
             Wishlist
           </Navbar.Brand>
+          <Navbar.Brand className="justify-content-end" href="/notif">
+            <i class="fas fa-bell fa-1x" />
+          </Navbar.Brand>
         </Navbar>
       </Container>
     );
