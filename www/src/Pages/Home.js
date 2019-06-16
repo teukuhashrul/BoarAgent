@@ -9,15 +9,39 @@ import {
   Image,
   Carousel
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Home.css";
-import { withRouter } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Autosuggest from "react-autosuggest";
 import Data from "../components/datapesawat";
+import {withApollo} from "react-apollo";
+import gql from "graphql-tag";
+import {Query,Mutation} from "react-apollo";
 
-const languages = [
+
+const query = gql`
+    query getCities{
+        getCities{
+            name
+            code
+            tours
+            tour{
+                place
+            }
+        }
+    }
+`;
+const mostPointIntrest = gql`
+    mutation getFavCities{
+        getFavCities
+    }
+`;
+const getVacationFlights = gql`
+    mutation getVacationFlights($origin:String,$dest:String,$departureDate:String) {
+        getVacationFlights(origin:$origin , dest:$dest , departureDate:$departureDate)
+    }
+`;
+let languages = [
   {
     name: "C"
   },
@@ -52,7 +76,14 @@ const getSuggestions = value => {
       );
 };
 
-const getSuggestionValue = suggestion => suggestion.name;
+const getSuggestionValue = suggestion => {
+  // this.setState({
+  //   origin: suggestion.code
+  // });
+
+  return   suggestion.code;
+
+};
 
 const renderSuggestion = suggestion => <div>{suggestion.name}</div>;
 
@@ -65,21 +96,65 @@ class Home extends Component {
       vacation: false,
       work: false,
       value: "",
-      suggestions: []
+      suggestions: [],
+      departure:"",
+      arrival:"",
+      isOneway :0,
+      origin:"",
+      destination:"",
+      flightOffer:[],
+      cities:[],
+      departureTine:"",
+      mostIntrest:''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangee = this.handleChangee.bind(this);
   }
+  componentDidMount() {
+    this.props.client.query({
+      query: query
+    }).then(res => {
+      this.setState({
+        cities:res.data.getCities[0]
+      });
+
+    });
+
+
+
+
+  }
+
 
   handleChange(date) {
+    let time = date+"";
+    let arrTIme = time.split(" ");
+    let month = new Date().getMonth();
+    if(month<10){
+      month = "0"+month;
+    }
+    let res = arrTIme[3]+"-"+month+"-"+arrTIme[2];
+
     this.setState({
-      startDatee: date
+      startDatee: date,
+      departure:res
     });
+
+
   }
   handleChangee(date) {
+    let time = date+"";
+    let arrTIme = time.split(" ");
+    let month = new Date().getMonth();
+    if(month<10){
+      month = "0"+month;
+    }
+    let res = arrTIme[3]+"-"+month+"-"+arrTIme[2];
     this.setState({
-      startDate: date
+      startDate: date,
+      arrival:res
     });
+
   }
 
   pilih() {
@@ -157,6 +232,8 @@ class Home extends Component {
         <Container className="d-flex justify-content-center text-center login-container">
           <Card className="home-card">
             <Row noGutters className="atasform">
+
+
               <Col>
                 <button
                   type="button"
@@ -210,7 +287,7 @@ class Home extends Component {
                   <Form.Group as={Col}>
                     {["radio"].map(type => (
                       <div key={`inline-${type}`} className="mb-3">
-                        <Form.Check inline label="One Way" type={type} id="1" />
+                        <Form.Check inline label="One Way"  type={type} id="1" />
                         <Form.Check
                           inline
                           label="MultiTrip"
@@ -252,7 +329,12 @@ class Home extends Component {
                   >
                     <i class="fas fa-plane-arrival" />{" "}
                     <Form.Label>Ke</Form.Label>
-                    <Form.Control type="text" />
+                    <Form.Control onChange={e=>{
+                      e.preventDefault();
+                      this.setState({
+                        destination:e.target.value
+                      });
+                    }} type="text" />
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
@@ -265,6 +347,7 @@ class Home extends Component {
                     <Form.Label>Pergi</Form.Label>
                     <DatePicker
                       className="formnya"
+                      dateFormat="yyyy-MM-dd"
                       selected={this.state.startDatee}
                       onChange={this.handleChange}
                     />
@@ -319,114 +402,98 @@ class Home extends Component {
               <Data />
             </div>
             <div className="buatvac" id="buatvac">
-              <Form className="login-form">
-                <Row>
-                  <Col>
-                    <h5 className="cari">
-                      Cari harga tiket pesawat murah dan promo di sini!
-                    </h5>
-                  </Col>
-                </Row>
+              {/*vacation*/}
+              <Mutation mutation={getVacationFlights}>
+                {(getVacationFlights) => (
+                      <Form
+                       className="login-form">
+                      <Row>
+                        <Col>
+                          <h5 className="cari">
+                            Cari harga tiket pesawat murah dan promo di sini!
+                          </h5>
+                        </Col>
+                      </Row>
 
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    {["radio"].map(type => (
-                      <div key={`inline-${type}`} className="mb-3">
-                        <Form.Check inline label="One Way" type={type} id="1" />
-                        <Form.Check
-                          inline
-                          label="MultiTrip"
-                          type={type}
-                          id="2"
-                        />
-                      </div>
-                    ))}{" "}
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <i class="fas fa-plane-departure" />
-                    {"   "} <Form.Label>Dari</Form.Label>
-                    <Autosuggest
-                      suggestions={suggestions}
-                      onSuggestionsFetchRequested={
-                        this.onSuggestionsFetchRequested
-                      }
-                      onSuggestionsClearRequested={
-                        this.onSuggestionsClearRequested
-                      }
-                      getSuggestionValue={getSuggestionValue}
-                      renderSuggestion={renderSuggestion}
-                      inputProps={inputProps}
-                    />
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <i class="far fa-calendar-alt" />{" "}
-                    <Form.Label>Pergi</Form.Label>
-                    <DatePicker
-                      className="formnya"
-                      selected={this.state.startDatee}
-                      onChange={this.handleChange}
-                    />
-                  </Form.Group>
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <i class="far fa-calendar-alt" />{" "}
-                    <Form.Label>Pulang</Form.Label>
-                    <DatePicker
-                      className="formnya"
-                      selected={this.state.startDate}
-                      onChange={this.handleChangee}
-                    />
-                  </Form.Group>
-                  <Form.Group as={Col} />
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <Form.Label>Penumpang</Form.Label>
+                      <Form.Row>
+                        <Form.Group as={Col}>
+                        </Form.Group>
+                      </Form.Row>
+                      <Form.Row>
+                        <Form.Group
+                          as={Col}
+                          controlId="loginEmail"
+                          className="text-left"
+                        >
+                          <i class="fas fa-plane-departure" />
+                          {"   "} <Form.Label>Dariz</Form.Label>
+                          <Form.Control onChange={e =>
+                            this.setState({origin: e.target.value})
+                          } type="text" />
+                        </Form.Group>
+                      </Form.Row>
+                      <Form.Row>
+                        <Form.Group
+                          as={Col}
+                          controlId="loginEmail"
+                          className="text-left"
+                        >
+                          <i class="far fa-calendar-alt" />{" "}
+                          <Form.Label>Pergiz</Form.Label>
+                          <Form.Control onChange={e =>
+                            this.setState({departureTine: e.target.value})
+                          } type="text" />
 
-                    <Form.Control type="date" />
-                  </Form.Group>
-                  <Form.Group
-                    as={Col}
-                    controlId="loginEmail"
-                    className="text-left"
-                  >
-                    <Form.Label>Kelas</Form.Label>
+                        </Form.Group>
 
-                    <Form.Control as="select">
-                      <option>Ekonomi</option>
-                      <option>Bisnis</option>
-                      <option>First Class</option>
-                    </Form.Control>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Col>
-                    <Button className="but" variant="danger">
-                      Search
-                    </Button>
-                  </Col>
-                </Form.Row>
-              </Form>
-              <Data />
-              <hr className="garisabuabu" />
-              <Data />
+                      </Form.Row>
+                      <Form.Row>
+                        <Col>
+                          <Button onClick={e=>{
+
+                            e.preventDefault();
+                            getVacationFlights({
+                              variables:{
+                                origin: this.state.origin,
+                                dest:this.state.cities.code,
+                                departureDate:this.state.departureTine
+                              }
+                            }).then(res => {
+
+                              this.setState({
+                                flightOffer:res.data.getVacationFlights
+                              });
+                              console.log(this.state.flightOffer);
+
+                            })
+
+                          }} className="but" variant="danger">
+                            Search
+                          </Button>
+                        </Col>
+                      </Form.Row>
+                    </Form>
+                )}
+
+
+
+
+
+              </Mutation>
+              {this.state.flightOffer.map((item, key) => (
+                <div >
+                  <Data
+                    maskapai={item.carrierCode}
+                    berangkat={this.state.origin}
+                    durasi={item.duration}
+                    sampai={item.arrival.iataCode}
+                    price={item.totalPrice}
+
+                  />
+                  <hr className="garisabuabu" />
+                </div>
+              ))}
+
             </div>
           </Card>
         </Container>
@@ -435,4 +502,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default withApollo(Home);
