@@ -15,8 +15,9 @@
   overflow: hidden;
   border: none;
   z-index: 10;
-  margin-top: -400px;
+  margin-top: -220px;
   height: 100%;
+  margin-left: 5rem;
 }
 .buatwork {
   display: none;
@@ -112,7 +113,9 @@ h3 {
 
   font-family: "VT323", monospace;
 }
-
+.navbar-default .navbar-brand {
+  color: maroon;
+}
 .belakanggambar2 {
   background-color: transparent;
   width: 10rem;
@@ -139,8 +142,9 @@ h3 {
 }
 .cari {
   margin-top: 1rem;
-
-  font-family: "Rubik", sans-serif;
+  margin-left: 5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
 }
 .returnicon {
   margin-top: 2rem;
@@ -154,4 +158,8 @@ h3 {
 }
 .atasform {
   margin-bottom: 1rem;
+  margin-left: 15rem;
+}
+.muka {
+  margin-left: -25rem;
 }

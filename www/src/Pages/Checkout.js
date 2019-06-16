@@ -12,6 +12,66 @@ import {
 import "./Checkout.css";
 import { withRouter } from "react-router-dom";
 
+const midtransClient = require("midtrans-client");
+// Create Snap API instance
+let snap = new midtransClient.Snap({
+  isProduction: false,
+  serverKey: "SB-Mid-server-8gxP9I8OPoWiGw0NJg2R3bdRY",
+  clientKey: "SB-Mid-client-XRt4tcImqIkvp98P"
+});
+
+let parameter = {
+  transaction_details: {
+    order_id: "test-transaction-123",
+    gross_amount: 200000
+  },
+  credit_card: {
+    secure: true
+  }
+};
+
+let trans = snap.createTransaction(parameter).then(transaction => {
+  // transaction token
+  let transactionToken = transaction.token;
+});
+
+snap.createTransaction(parameter).then(transaction => {
+  // transaction redirect_url
+  let redirectUrl = transaction.redirect_url;
+  console.log("redirectUrl:", redirectUrl);
+});
+
+function pilih2() {
+  document.getElementById("pay-button").onclick = function() {
+    // SnapToken acquired from previous step
+    snap.pay(trans, {
+      // Optional
+      onSuccess: function(result) {
+        /* You may add your own js here, this is just example */ document.getElementById(
+          "result-json"
+        ).innerHTML += JSON.stringify(result, null, 2);
+      },
+      // Optional
+      onPending: function(result) {
+        /* You may add your own js here, this is just example */ document.getElementById(
+          "result-json"
+        ).innerHTML += JSON.stringify(result, null, 2);
+      },
+      // Optional
+      onError: function(result) {
+        /* You may add your own js here, this is just example */ document.getElementById(
+          "result-json"
+        ).innerHTML += JSON.stringify(result, null, 2);
+      }
+    });
+  };
+}
+
+// alternative way to create transactionToken
+// snap.createTransactionToken(parameter)
+//     .then((transactionToken)=>{
+//         console.log('transactionToken:',transactionToken);
+//     })
 class Checkout extends Component {
   constructor(props, context) {
     super(props, context);
@@ -38,19 +98,6 @@ class Checkout extends Component {
                 <Form.Group controlId="registerEmail" className="text-left">
                   <Form.Label>Phone Number</Form.Label>
                   <Form.Control type="number" className="batasisi" />
-                </Form.Group>
-
-                <Form.Group controlId="registerPassword" className="text-left">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" className="batasisi" />
-                </Form.Group>
-
-                <Form.Group
-                  controlId="registerConfirmPassword"
-                  className="text-left"
-                >
-                  <Form.Label>Konfirmasi Password</Form.Label>
-                  <Form.Control type="password" className="batasisi" />
                 </Form.Group>
               </Form>
             </Card>
@@ -84,7 +131,7 @@ class Checkout extends Component {
                 </Form.Group>
               </Form>
             </Card>
-            <Button>Pembayaran</Button>
+            <button id="pay-button">Pay!</button>
           </Col>
           <Col>
             <Card className="checkoutaja">
