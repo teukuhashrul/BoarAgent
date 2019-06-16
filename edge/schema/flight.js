@@ -38,7 +38,6 @@ const resolvers = {
             currencyRate = 16114;
           }
           arrData.forEach((item) => {
-
             let offerItems = item.offerItems;
             offerItems.forEach(item => {
 
@@ -106,8 +105,6 @@ const resolvers = {
                 item.segments.forEach((item, index) => {
                   let departureAirport= item.flightSegment.departure.iataCode;
                   let arrivalAirport = item.flightSegment.arrival.iataCode;
-                  // let date = new Date(item.flightSegment.arrival.at);
-                  // console.log(date.getHours());
                   if((departureAirport === origin && arrivalAirport === dest) ||(departureAirport === dest && arrivalAirport === origin) ){
                     let test = item.flightSegment.arrival.at.split("T")[1].split("+");
                     totalPrice=Math.floor(totalPrice * currencyRate) +"";

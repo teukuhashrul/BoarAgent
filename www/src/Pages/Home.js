@@ -374,7 +374,11 @@ class Home extends Component {
                       <Col>
                         <Button onClick={(e)=>{
                           e.preventDefault();
-                          console.log("asdasd");
+                          getBusinesFLights({
+                            variables: {
+
+                            }
+                          })
 
                         }} className="but" variant="danger">
                           Pesan
