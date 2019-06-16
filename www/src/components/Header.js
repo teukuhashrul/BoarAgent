@@ -20,7 +20,11 @@ class Header extends Component {
             <img src={require("../Pages/images/logo.png")} width="50" />
           </Navbar.Brand>
           <Navbar.Brand href="/">Boar Agent</Navbar.Brand>
-          <Navbar.Brand className="justify-content-end" href="/Login">
+          <Navbar.Brand
+            color="maroon"
+            className="justify-content-end"
+            href="/Login"
+          >
             Log in
           </Navbar.Brand>
           <Navbar.Brand className="justify-content-end" href="/Register">

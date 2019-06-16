@@ -16,7 +16,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Autosuggest from "react-autosuggest";
 import Data from "../components/datapesawat";
-
+import "./Gallery.css";
+import Cardd from "../components/Card";
 const languages = [
   {
     name: "C"
@@ -41,6 +42,33 @@ const languages = [
   }
 ];
 
+const product = [
+  {
+    id: 1,
+    name: "Bandung",
+    image: "https://ik.imagekit.io/gg7r7ahaz/lol_OaV5tCTlN.jpg",
+    category_id: 1
+  },
+  {
+    id: 2,
+    name: "Bali",
+    image: "https://ik.imagekit.io/gg7r7ahaz/beaches-444x266_HxhTDTyKz.jpg",
+    category_id: 2
+  },
+  {
+    id: 3,
+    name: "China",
+    image:
+      "https://ik.imagekit.io/gg7r7ahaz/best-time-to-visit-china-250x250_N47OTwRhj.png",
+    category_id: 3
+  },
+  {
+    id: 4,
+    name: "Singapore",
+    image: "https://ik.imagekit.io/gg7r7ahaz/185671_uIW6rDJdD.jpg",
+    category_id: 1
+  }
+];
 const getSuggestions = value => {
   const inputValue = value.trim().toLowerCase();
   const inputLength = inputValue.length;
@@ -65,7 +93,9 @@ class Home extends Component {
       vacation: false,
       work: false,
       value: "",
-      suggestions: []
+      suggestions: [],
+      product,
+      visible: 4
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangee = this.handleChangee.bind(this);
@@ -141,7 +171,7 @@ class Home extends Component {
       <React.Fragment>
         <Carousel
           className="home-gida-carousel"
-          interval={3500}
+          interval={5500}
           indicators={false}
         >
           <Carousel.Item>
@@ -154,58 +184,65 @@ class Home extends Component {
             />
           </Carousel.Item>
         </Carousel>
-        <Container className="d-flex justify-content-center text-center login-container">
+        <Container>
           <Card className="home-card">
-            <Row noGutters className="atasform">
-              <Col>
-                <button
-                  type="button"
-                  id="work"
-                  href="#"
-                  onClick={() => this.pilih()}
-                  className="buttonawal a"
-                  disabled={this.state.vac}
-                >
-                  <div className="belakanggambar1">
-                    <Image
-                      width="150"
-                      src={require("./images/work.png")}
-                      alt="work"
-                    />
-                    <h3>Work</h3>
-                  </div>
-                </button>
-              </Col>
-              <Col>
-                <button
-                  type="button"
-                  id="vac"
-                  href="#"
-                  onClick={() => this.pilih2()}
-                  className="buttonawal b"
-                  disabled={this.state.work}
-                >
-                  <div className="belakanggambar2">
-                    <Image
-                      width="150"
-                      src={require("./images/vac.png")}
-                      alt="vacation"
-                    />
-                    <h3>Vacation</h3>
-                  </div>
-                </button>
-              </Col>
-            </Row>
+            <div className="temp">
+              {" "}
+              <Row>
+                <Col className="position-absolute">
+                  <Image
+                    width="10%"
+                    src={require("./images/logo.png")}
+                    className="muka"
+                  />
+                </Col>
+                <Col>
+                  <h1 className="cari">Hi, Mau kemana?</h1>
+                </Col>
+              </Row>
+              <Row noGutters className="atasform">
+                <Col>
+                  <button
+                    type="button"
+                    id="work"
+                    href="#"
+                    onClick={() => this.pilih()}
+                    className="buttonawal a"
+                    disabled={this.state.vac}
+                  >
+                    <div className="belakanggambar1">
+                      <Image
+                        width="150"
+                        src={require("./images/work.png")}
+                        alt="work"
+                      />
+                      <h3>Work</h3>
+                    </div>
+                  </button>
+                </Col>
+                <Col>
+                  <button
+                    type="button"
+                    id="vac"
+                    href="#"
+                    onClick={() => this.pilih2()}
+                    className="buttonawal b"
+                    disabled={this.state.work}
+                  >
+                    <div className="belakanggambar2">
+                      <Image
+                        width="150"
+                        src={require("./images/vac.png")}
+                        alt="vacation"
+                      />
+                      <h3>Vacation</h3>
+                    </div>
+                  </button>
+                </Col>
+              </Row>
+            </div>
             <div className="buatwork" id="buatwork">
               <Form className="login-form">
-                <Row>
-                  <Col>
-                    <h5 className="cari">
-                      Cari harga tiket pesawat murah dan promo di sini!
-                    </h5>
-                  </Col>
-                </Row>
-
                 <Form.Row>
                   <Form.Group as={Col}>
                     {["radio"].map(type => (
@@ -309,25 +346,17 @@ class Home extends Component {
                 <Form.Row>
                   <Col>
                     <Button className="but" variant="danger">
-                      Pesan
+                      Search
                     </Button>
                   </Col>
                 </Form.Row>
               </Form>
-              <Data />
+              {/* <Data />
               <hr className="garisabuabu" />
-              <Data />
+              <Data /> */}
             </div>
             <div className="buatvac" id="buatvac">
               <Form className="login-form">
-                <Row>
-                  <Col>
-                    <h5 className="cari">
-                      Cari harga tiket pesawat murah dan promo di sini!
-                    </h5>
-                  </Col>
-                </Row>
-
                 <Form.Row>
                   <Form.Group as={Col}>
                     {["radio"].map(type => (
@@ -424,12 +453,77 @@ class Home extends Component {
                   </Col>
                 </Form.Row>
               </Form>
-              <Data />
+              {/* <Data />
               <hr className="garisabuabu" />
-              <Data />
+              <Data /> */}
             </div>
           </Card>
+          <Row />
         </Container>
+        <Row>
+          <Col>
+            <div className="hone-container">
+              <div className=" no-padding">
+                <Row>
+                  <Image
+                    md={12}
+                    lg={12}
+                    xs={12}
+                    className="img-fluid"
+                    src={require("./images/pls.png")}
+                  />
+                </Row>
+              </div>
+              <Container className="my-5">
+                <Row>
+                  {/*looping product from card*/}
+                  <Cardd
+                    visible={this.state.visible}
+                    product={this.state.product}
+                  />
+
+                  {this.state.visible < this.state.product.length && (
+                    <Col lg={12} md={12} xs={12}>
+                      <div className="d-flex justify-content-center" />
+                    </Col>
+                  )}
+                </Row>
+              </Container>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className="hone-container">
+              <div className=" no-padding">
+                <Row>
+                  <Image
+                    md={12}
+                    lg={12}
+                    xs={12}
+                    className="img-fluid"
+                    src={require("./images/plss.png")}
+                  />
+                </Row>
+              </div>
+              <Container className="my-5">
+                <Row>
+                  {/*looping product from card*/}
+                  <Cardd
+                    visible={this.state.visible}
+                    product={this.state.product}
+                  />
+
+                  {this.state.visible < this.state.product.length && (
+                    <Col lg={12} md={12} xs={12}>
+                      <div className="d-flex justify-content-center" />
+                    </Col>
+                  )}
+                </Row>
+              </Container>
+            </div>
+          </Col>
+        </Row>
       </React.Fragment>
     );
   }
